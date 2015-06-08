@@ -36,7 +36,9 @@ public class CyclingStateChecker implements StateChecker {
 
     @Override
     public GameState check(GameMap gameMap) {
-        return (0>=findSame(gameMap, storage.history(gameMap.getId())))?GameState.GAMEOVER: GameState.PLAYING;
+        return (0>=findSame(gameMap, storage.history(gameMap.getId())))
+                ?GameState.GAMEOVER
+                : GameState.PLAYING;
     }
 
     @Override
