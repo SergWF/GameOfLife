@@ -10,4 +10,5 @@ public interface StateStorage {
     List<GameMap> history(UUID gameId);
     GameMap getLast(UUID gameId);
 
+    GameMap updateLast(GameMap gameMap);
 }

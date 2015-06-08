@@ -36,7 +36,6 @@ public class GameHandler {
         StateChecker fault = checkFaultState(gameMap);
         gameMap.setGameState((null != fault)?fault.getFaultState():GameState.PLAYING);
         gameMap.setMessage((null != fault)?fault.getMessage():"Do Next Turn");
-        System.out.println(printMap(gameMap));
         return gameMap;
     }
 

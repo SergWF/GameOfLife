@@ -31,4 +31,12 @@ public class StateStorageImpl implements StateStorage {
         return history.isEmpty()?null:history.get(history.size() -1);
     }
 
+    @Override
+    public GameMap updateLast(GameMap gameMap) {
+        List<GameMap> history = history(gameMap.getId());
+        history.remove(history.size()-1);
+        history.add(gameMap);
+        return gameMap;
+    }
+
 }

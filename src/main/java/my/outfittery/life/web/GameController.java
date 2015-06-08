@@ -25,12 +25,15 @@ public class GameController {
 
     @RequestMapping(value = "{gameId}/place")
     public @ResponseBody GameMap placeLife(@PathVariable("gameId") UUID gameId, @RequestParam int x, @RequestParam int y){
-        return gameHandler.placeLife(stateStorage.getLast(gameId), x, y);
+        GameMap gameMap = gameHandler.placeLife(stateStorage.getLast(gameId), x, y);
+        return stateStorage.updateLast(gameMap);
     }
 
     @RequestMapping("{gameId}/next")
     public @ResponseBody GameMap doNextTurn(@PathVariable("gameId") UUID gameId){
-        return gameHandler.makeTurn(stateStorage.getLast(gameId));
+        GameMap gameMap = gameHandler.makeTurn(stateStorage.getLast(gameId));
+        stateStorage.save(gameMap);
+        return gameMap;
     }
 
 

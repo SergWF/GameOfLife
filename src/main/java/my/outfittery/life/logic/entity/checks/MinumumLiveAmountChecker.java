@@ -5,6 +5,7 @@ import my.outfittery.life.logic.entity.GameState;
 import my.outfittery.life.logic.entity.StateChecker;
 
 public class MinumumLiveAmountChecker implements StateChecker {
+    public static final String MESSAGE = "Should be at least two live cell";
     private int liveAmount;
 
     public MinumumLiveAmountChecker(int liveAmount) {
@@ -28,7 +29,7 @@ public class MinumumLiveAmountChecker implements StateChecker {
 
     @Override
     public String getMessage() {
-        return "Should be at least two live cell";
+        return MESSAGE;
     }
 
     @Override

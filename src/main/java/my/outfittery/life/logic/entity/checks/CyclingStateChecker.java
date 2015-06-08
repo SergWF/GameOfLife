@@ -11,6 +11,7 @@ import java.util.List;
 public class CyclingStateChecker implements StateChecker {
 
     private StateStorage storage;
+    public static final String MESSAGE = "Game is finished because of cycling";;
 
 
     public CyclingStateChecker(StateStorage storage) {
@@ -28,7 +29,7 @@ public class CyclingStateChecker implements StateChecker {
         int i = 0;
         for(GameMap histMap: history){
             if(isSame(gameMap, histMap)){
-                return i++;
+                return ++i;
             }
         }
         return -1;
@@ -36,14 +37,14 @@ public class CyclingStateChecker implements StateChecker {
 
     @Override
     public GameState check(GameMap gameMap) {
-        return (0>=findSame(gameMap, storage.history(gameMap.getId())))
+        return (0<findSame(gameMap, storage.history(gameMap.getId())))
                 ?GameState.GAMEOVER
                 : GameState.PLAYING;
     }
 
     @Override
     public String getMessage() {
-        return "Game is finished because of cycling";
+        return MESSAGE;
     }
 
     @Override

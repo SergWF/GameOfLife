@@ -82,15 +82,4 @@ public class GameHandlerTest {
         Assert.assertEquals(gameMap.getId(), newGameMap.getId());
     }
 
-    private void printMap(GameMap map){
-        StringBuilder sb = new StringBuilder();
-        for(int x = 0; x < map.getxSize(); x++){
-            for(int y = 0; y < map.getySize(); y++){
-                sb.append(map.isAlive(x, y)?"x":"o");
-            }
-            sb.append("\n");
-        }
-        System.out.println(sb.toString());
-    }
-
 }
